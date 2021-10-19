@@ -4,11 +4,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-  name = 'tomba',
+  name = 'tomba-io',
   version = '1.0.0',
   license='Apache-2.0',
   description = 'Tomba.io is an Email Finder for B2B sales and email marketing',
   long_description=long_description,
+  long_description_content_type="text/markdown",
   author = 'Tomba technology web service LLC',
   author_email = 'info@tomba.io',
   maintainer = 'Mohamed Ben rebia',
@@ -24,7 +25,6 @@ setuptools.setup(
     'Intended Audience :: Developers',
     'Environment :: Web Environment',
     'Topic :: Software Development',
-    'License :: OSI Approved :: ',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
