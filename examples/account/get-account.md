@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.account import Account
 
@@ -11,3 +12,4 @@ client = Client()
 account = Account(client)
 
 result = account.get_account()
+```

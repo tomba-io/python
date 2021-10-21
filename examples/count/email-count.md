@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.count import Count
 
@@ -11,3 +12,4 @@ client = Client()
 count = Count(client)
 
 result = count.email_count('tomba.io')
+```

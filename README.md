@@ -11,9 +11,9 @@ allowing you to:
 
 # Getting Started
 
-You'll need an Tomba API access token, which you can get by signing up for a free account at https://app.tomba.io/auth/register
+You'll need an Tomba API access token, which you can get by signing up for a free account at [https://app.tomba.io/auth/register](https://app.tomba.io/auth/register)
 
-The free plan is limited to 25 search request and 50 verification a month,  To enable all the data fields and additional request volumes see https://tomba.io/pricing.
+The free plan is limited to 25 search request and 50 verification a month,  To enable all the data fields and additional request volumes see [https://tomba.io/pricing](https://tomba.io/pricing).
 
 ## Installation
 
@@ -63,7 +63,7 @@ client = Client()
 
 finder = Finder(client)
 
-result = finder.email_finder('stripe.com', 'Moskoz', 'Dustin')
+result = finder.email_finder('stripe.com', 'fname', 'lname')
 
 ```
 
@@ -94,13 +94,13 @@ Sample codes under **examples/** folder.
 
 ## Documentation
 
-See the [official documentation](https://ipfinder.io/docs).
+See the [official documentation](https://developer.tomba.io/#introduction).
 
 ### Other Libraries
 
 There are official Tomba Email Finder client libraries available for many languages including PHP, Python, Go, Java, Ruby, and many popular frameworks such as Django, Rails and Laravel. There are also many third party libraries and integrations available for our API.
 
-https://developer.tomba.io/#introduction-libraries
+[https://developer.tomba.io/#introduction-libraries](https://developer.tomba.io/#introduction-libraries)
 
 ### About Tomba
 
@@ -111,7 +111,7 @@ Founded in 2020, Tomba prides itself on being the most reliable, accurate, and i
 
 ## Contribution
 
-1. Fork it (<https://github.com/tomba-io/go/fork>)
+1. Fork it (<https://github.com/tomba-io/python/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

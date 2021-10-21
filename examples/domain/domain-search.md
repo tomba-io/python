@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.domain import Domain
 
@@ -11,3 +12,4 @@ client = Client()
 domain = Domain(client)
 
 result = domain.domain_search('stripe.com')
+```

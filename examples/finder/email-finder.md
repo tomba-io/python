@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.finder import Finder
 
@@ -10,4 +11,5 @@ client = Client()
 
 finder = Finder(client)
 
-result = finder.email_finder('stripe.com', 'Moskoz', 'Dustin')
+result = finder.email_finder('stripe.com', 'fname', 'lname')
+```

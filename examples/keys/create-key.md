@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.keys import Keys
 
@@ -11,3 +12,4 @@ client = Client()
 keys = Keys(client)
 
 result = keys.create_key()
+```

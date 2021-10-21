@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.leads_attributes import LeadsAttributes
 
@@ -11,3 +12,4 @@ client = Client()
 leads_attributes = LeadsAttributes(client)
 
 result = leads_attributes.get_lead_attributes()
+```

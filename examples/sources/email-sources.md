@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.sources import Sources
 
@@ -11,3 +12,4 @@ client = Client()
 sources = Sources(client)
 
 result = sources.email_sources('b.mohamed@tomba.io')
+```

@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.logs import Logs
 
@@ -11,3 +12,4 @@ client = Client()
 logs = Logs(client)
 
 result = logs.get_logs()
+```

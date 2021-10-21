@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.status import Status
 
@@ -11,3 +12,4 @@ client = Client()
 status = Status(client)
 
 result = status.auto_complete('google')
+```

@@ -1,3 +1,4 @@
+```python
 from tomba.client import Client
 from tomba.services.verifier import Verifier
 
@@ -11,3 +12,4 @@ client = Client()
 verifier = Verifier(client)
 
 result = verifier.email_verifier('b.mohamed@tomba.io')
+```
