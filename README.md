@@ -17,7 +17,7 @@ The free plan is limited to 25 search request and 50 verification a month,  To e
 
 ## Installation
 
-To install via [PyPI](https://pypi.org/):
+To install via [PyPI](https://pypi.org/project/tomba-io/):
 
 ```bash
 pip install tomba-io
