@@ -1,6 +1,7 @@
 from ..service import Service
 from ..exception import TombaException
 
+
 class Finder(Service):
 
     def __init__(self, client):
@@ -9,24 +10,72 @@ class Finder(Service):
     def email_finder(self, domain, first_name, last_name):
         """Email Finder"""
 
-        if domain is None: 
+        if domain is None:
             raise TombaException('Missing required parameter: "domain"')
 
-        if first_name is None: 
+        if first_name is None:
             raise TombaException('Missing required parameter: "first_name"')
 
-        if last_name is None: 
+        if last_name is None:
             raise TombaException('Missing required parameter: "last_name"')
 
         params = {}
-        path = '/email-finder/{domain}'
-        path = path.replace('{domain}', domain)                
+        path = '/email-finder'
 
-        if first_name is not None: 
+        if domain is not None:
+            params['domain'] = domain
+
+        if first_name is not None:
             params['first_name'] = first_name
 
-        if last_name is not None: 
+        if last_name is not None:
             params['last_name'] = last_name
+
+        return self.client.call('get', path, {
+            'content-type': 'application/json',
+        }, params)
+
+    def author_finder(self, url):
+        """Author Finder"""
+
+        if url is None:
+            raise TombaException('Missing required parameter: "url"')
+
+        params = {}
+        path = '/email-finder'
+
+        if url is not None:
+            params['url'] = url
+
+        return self.client.call('get', path, {
+            'content-type': 'application/json',
+        }, params)
+
+    def linkedin_finder(self, url):
+        """Linkedin Finder"""
+
+        if url is None:
+            raise TombaException('Missing required parameter: "url"')
+
+        params = {}
+        path = '/linkedin'
+
+        if url is not None:
+            params['url'] = url
+
+        return self.client.call('get', path, {
+            'content-type': 'application/json',
+        }, params)
+
+    def phone_finder(self, email):
+        """Phone Finder"""
+
+        if email is None:
+            raise TombaException('Missing required parameter: "email"')
+
+        params = {}
+        path = '/phone/{email}'
+        path = path.replace('{email}', email)
 
         return self.client.call('get', path, {
             'content-type': 'application/json',
