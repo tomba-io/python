@@ -1,4 +1,4 @@
-```python
+```py
 from tomba.client import Client
 from tomba.services.logs import Logs
 

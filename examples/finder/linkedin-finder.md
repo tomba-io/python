@@ -11,5 +11,5 @@ client = Client()
 
 finder = Finder(client)
 
-result = finder.email_finder('stripe.com', 'fname', 'lname')
+result = finder.linkedin_finder('https://www.linkedin.com/in/alex-maccaw-ab592978')
 ```

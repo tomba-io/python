@@ -1,10 +1,11 @@
-# [<img src="https://app.tomba.io/tomba/f250de39816043cfc8f5578fa078a79e.svg" alt="Tomba" width="25"/>](https://tomba.io/) Tomba Email Finder Python Client Library
+# [<img src="https://app.tomba.io/logo.svg" alt="Tomba" width="25"/>](https://tomba.io/) Tomba Email Finder Python Client Library
 
-This is the official Python client library for the [Tomba.io](https://tomba.io.io) Email Finder API,
+This is the official Python client library for the [Tomba.io](https://tomba.io) Email Finder API,
 allowing you to:
 
 - [Domain Search.](https://developer.tomba.io/#domain-search) (Search emails are based on the website You give one domain name and it returns all the email addresses found on the internet.)
 - [Email Finder](https://developer.tomba.io/#email-finder) (This API endpoint generates or retrieves the most likely email address from a domain name, a first name and a last name..)
+- [Author Finder](https://tomba.io/author-finder) (Instantly discover the email addresses of article authors.)
 - [Email Verifier.](https://developer.tomba.io/#email-verifier) (checks the deliverability of a given email address, verifies if it has been found in our database, and returns their sources.)
 - [Email Sources](https://developer.tomba.io/#email-sources) (Find email address source somewhere on the web .)
 - [Company Domain autocomplete](https://developer.tomba.io/#autocomplete) (Company Autocomplete is an API that lets you auto-complete company names and retreive logo and domain information.)
@@ -29,7 +30,7 @@ pip install tomba-io
 
 get email addresses found on the internet.
 
-```python
+```py
 from tomba.client import Client
 from tomba.services.domain import Domain
 
@@ -50,7 +51,7 @@ result = domain.domain_search('stripe.com')
 
 Find the verified email address of any professional.
 
-```python
+```py
 from tomba.client import Client
 from tomba.services.finder import Finder
 
@@ -71,7 +72,7 @@ result = finder.email_finder('stripe.com', 'fname', 'lname')
 
 Verify the validity of any professional email address with the most complete email checker.
 
-```python
+```py
 from tomba.client import Client
 from tomba.services.verifier import Verifier
 

@@ -1,4 +1,4 @@
-```python
+```py
 from tomba.client import Client
 from tomba.services.leads_lists import LeadsLists
 

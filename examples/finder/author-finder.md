@@ -11,5 +11,5 @@ client = Client()
 
 finder = Finder(client)
 
-result = finder.email_finder('stripe.com', 'fname', 'lname')
+result = finder.author_finder('https://clearbit.com/blog/company-name-to-domain-api')
 ```
