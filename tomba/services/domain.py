@@ -9,20 +9,22 @@ class Domain(Service):
     def domain_search(self, domain, page = None, limit = None, department = None):
         """Domain Search"""
 
-        if domain is None: 
+        if domain is None:
             raise TombaException('Missing required parameter: "domain"')
 
         params = {}
-        path = '/domain-search/{domain}'
-        path = path.replace('{domain}', domain)                
+        path = '/domain-search'
 
-        if page is not None: 
+        if domain is not None:
+            params['domain'] = domain
+
+        if page is not None:
             params['page'] = page
 
-        if limit is not None: 
+        if limit is not None:
             params['limit'] = limit
 
-        if department is not None: 
+        if department is not None:
             params['department'] = department
 
         return self.client.call('get', path, {
