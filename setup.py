@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
   name = 'tomba-io',
-  version = '1.0.2',
+  version = '1.0.3',
   license='Apache-2.0',
   description = 'Tomba.io is an Email Finder for B2B sales and email marketing',
   long_description=long_description,
