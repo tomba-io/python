@@ -51,6 +51,22 @@ class Finder(Service):
             'content-type': 'application/json',
         }, params)
 
+    def enrichment(self, email):
+            """Enrichment"""
+
+            if email is None:
+                raise TombaException('Missing required parameter: "email"')
+
+            params = {}
+            path = '/enrich'
+
+            if email is not None:
+                params['email'] = email
+
+            return self.client.call('get', path, {
+                'content-type': 'application/json',
+            }, params)
+
     def linkedin_finder(self, url):
         """Linkedin Finder"""
 
