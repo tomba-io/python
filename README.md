@@ -1,4 +1,4 @@
-# [<img src="https://app.tomba.io/logo.svg" alt="Tomba" width="25"/>](https://tomba.io/) Tomba Email Finder Python Client Library
+# [<img src="https://tomba.io/logo.svg" alt="Tomba" width="25"/>](https://tomba.io/) Tomba Email Finder Python Client Library
 
 This is the official Python client library for the [Tomba.io](https://tomba.io) Email Finder API,
 allowing you to:
