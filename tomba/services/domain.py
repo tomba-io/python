@@ -1,12 +1,13 @@
 from ..service import Service
 from ..exception import TombaException
 
+
 class Domain(Service):
 
     def __init__(self, client):
         super(Domain, self).__init__(client)
 
-    def domain_search(self, domain, page = None, limit = None, department = None):
+    def domain_search(self, domain, page=None, limit=None, department=None, country=None):
         """Domain Search"""
 
         if domain is None:
@@ -26,6 +27,9 @@ class Domain(Service):
 
         if department is not None:
             params['department'] = department
+
+        if country is not None:
+            params['country'] = country
 
         return self.client.call('get', path, {
             'content-type': 'application/json',
