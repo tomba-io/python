@@ -52,20 +52,20 @@ class Finder(Service):
         }, params)
 
     def enrichment(self, email):
-            """Enrichment"""
+        """Enrichment"""
 
-            if email is None:
-                raise TombaException('Missing required parameter: "email"')
+        if email is None:
+            raise TombaException('Missing required parameter: "email"')
 
-            params = {}
-            path = '/enrich'
+        params = {}
+        path = '/enrich'
 
-            if email is not None:
-                params['email'] = email
+        if email is not None:
+            params['email'] = email
 
-            return self.client.call('get', path, {
-                'content-type': 'application/json',
-            }, params)
+        return self.client.call('get', path, {
+            'content-type': 'application/json',
+        }, params)
 
     def linkedin_finder(self, url):
         """Linkedin Finder"""
@@ -83,15 +83,33 @@ class Finder(Service):
             'content-type': 'application/json',
         }, params)
 
-    def phone_finder(self, email):
-        """Phone Finder"""
+    def format(self, domain):
+        """Email Format"""
 
-        if email is None:
-            raise TombaException('Missing required parameter: "email"')
+        if domain is None:
+            raise TombaException('Missing required parameter: "domain"')
 
         params = {}
-        path = '/phone/{email}'
-        path = path.replace('{email}', email)
+        path = '/format'
+
+        if domain is not None:
+            params['domain'] = domain
+
+        return self.client.call('get', path, {
+            'content-type': 'application/json',
+        }, params)
+
+    def location(self, domain):
+        """Domain Location"""
+
+        if domain is None:
+            raise TombaException('Missing required parameter: "domain"')
+
+        params = {}
+        path = '/location'
+
+        if domain is not None:
+            params['domain'] = domain
 
         return self.client.call('get', path, {
             'content-type': 'application/json',
