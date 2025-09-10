@@ -1,6 +1,6 @@
 ```py
 from tomba.client import Client
-from tomba.services.finder import Finder
+from tomba.services.phone import Phone
 
 client = Client()
 
@@ -9,7 +9,7 @@ client = Client()
   .set_secret('') # Your Secret
 )
 
-finder = Finder(client)
+phone = Phone(client)
 
-result = finder.phone_finder('******@zapier.com')
+result = phone.finder('******@zapier.com')
 ```
