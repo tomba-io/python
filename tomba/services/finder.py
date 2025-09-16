@@ -42,7 +42,7 @@ class Finder(Service):
             raise TombaException('Missing required parameter: "url"')
 
         params = {}
-        path = '/email-finder'
+        path = '/author-finder'
 
         if url is not None:
             params['url'] = url
