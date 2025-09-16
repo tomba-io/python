@@ -69,6 +69,7 @@ class Client:
                 json=json,
                 files=files,
                 headers=headers,
+                timeout=60
             )
 
             response.raise_for_status()
