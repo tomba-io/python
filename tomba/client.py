@@ -10,6 +10,7 @@ class Client:
             'content-type': '',
             'x-sdk-version': 'tomba:python:v1.0.4',
         }
+        self._timeout = 30
 
     def set_endpoint(self, endpoint):
         self._endpoint = endpoint
@@ -29,6 +30,12 @@ class Client:
         """Your Secret"""
 
         self._global_headers['x-tomba-secret'] = value
+        return self
+
+    def set_timeout(self, value):
+        """Timeout in seconds"""
+
+        self._timeout = value
         return self
 
     def call(self, method, path='', headers=None, params=None):
@@ -69,7 +76,7 @@ class Client:
                 json=json,
                 files=files,
                 headers=headers,
-                timeout=60
+                timeout=self._timeout
             )
 
             response.raise_for_status()
