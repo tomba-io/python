@@ -16,6 +16,11 @@ You'll need an Tomba API access token, which you can get by signing up for a fre
 
 The free plan is limited to 25 search request and 50 verification a month, To enable all the data fields and additional request volumes see [https://tomba.io/pricing](https://tomba.io/pricing).
 
+## Requirements
+
+-   Python 3.5+
+-   `requests` library
+
 ## Installation
 
 To install via [PyPI](https://pypi.org/project/tomba-io/):
@@ -24,228 +29,63 @@ To install via [PyPI](https://pypi.org/project/tomba-io/):
 pip install tomba-io
 ```
 
+## Quick Start
+
+```py
+from tomba.client import Client
+
+client = Client()
+client.set_key('YOUR_KEY').set_secret('YOUR_SECRET')
+```
+
 ## Usage
 
 ### Domain Search
 
-get email addresses found on the internet.
-
 ```py
-from tomba.client import Client
 from tomba.services.domain import Domain
 
-client = Client()
-
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
-)
-
 domain = Domain(client)
-
 result = domain.domain_search('stripe.com')
-```
-
-#### Domain Search Response
-
-```json
-{
-  "data": {
-    "organization": {
-      "location": {
-        "country": "US",
-        "city": "San Francisco",
-        "state": "California",
-        "street_address": "-122.41"
-      },
-      "social_links": {
-        "twitter_url": "https://twitter.com/stripe",
-        "facebook_url": "https://www.facebook.com/StripeHQ",
-        "linkedin_url": "https://www.linkedin.com/company/2135371"
-      },
-      "disposable": false,
-      "webmail": false,
-      "website_url": "stripe.com",
-      "phone_number": "",
-      "industries": "internet",
-      "postal_code": "94107",
-      "employee_count": 976,
-      "founded": "2010",
-      "company_size": "1001-5000",
-      "last_updated": "2023-03-28T16:21:55+01:00",
-      "revenue": "150000",
-      "accept_all": true,
-      "description": "Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Headquartered in San Francisco and Dublin, the company aims to increase the GDP of the internet.",
-      "pattern": "{first}",
-      "domain_score": 30,
-      "organization": "stripe",
-      "whois": {
-        "registrar_name": "SafeNames Ltd.",
-        "created_date": "1995-09-12 00:00:00",
-        "referral_url": "https://www.safenames.net/"
-      }
-    },
-    "emails": [
-      {
-        "email": "**@stripe.com",
-        "first_name": "**",
-        "last_name": "**",
-        "full_name": "** **",
-        "gender": "female",
-        "phone_number": null,
-        "type": "personal",
-        "country": "US",
-        "position": "Financial Crimes Analyst",
-        "department": "finance",
-        "seniority": "senior",
-        "twitter": null,
-        "linkedin": "https://www.linkedin.com/in/**",
-        "accept_all": true,
-        "pattern": "{first}",
-        "score": 90,
-        "verification": { "date": null, "status": null },
-        "last_updated": "2023-02-21T14:18:24+01:00",
-        "sources": [
-          {
-            "uri": "https://stripe.com/docs/cli",
-            "website_url": "stripe.com",
-            "extracted_on": "2022-03-08T01:23:16+01:00",
-            "last_seen_on": "2022-08-04T09:42:10+01:00",
-            "still_on_page": true
-          }
-        ]
-      },
-      ...
-      ...
-      ...
-      ...
-    ]
-  },
-  "meta": { "total": 2031, "pageSize": 10, "current": 0, "total_pages": 204 }
-}
+print(result)
 ```
 
 ### Email Finder
 
-Find the verified email address of any professional.
-
 ```py
-from tomba.client import Client
 from tomba.services.finder import Finder
 
-client = Client()
-
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
-)
-
 finder = Finder(client)
-
 result = finder.email_finder('tomba.io', 'Mohamed', 'Ben rebia')
-```
-
-#### Email Finder Response
-
-```json
-{
-  "data": {
-    "email": "b.mohamed@tomba.io",
-    "first_name": "Mohamed",
-    "last_name": "Ben rebia",
-    "full_name": "Mohamed Ben rebia",
-    "gender": "male",
-    "country": null,
-    "position": "CEO",
-    "twitter": null,
-    "linkedin": "https://www.linkedin.com/in/mohamed-ben-rebia",
-    "phone_number": null,
-    "accept_all": null,
-    "website_url": "tomba.io",
-    "company": "Tomba technology web service LLC ",
-    "score": 99,
-    "verification": { "date": "2022-05-25", "status": "valid" },
-    "sources": [
-      {
-        "uri": "https://github.com/tomba-io/generic-emails/blob/084fc1a63d3cdaf9a34f255bedc2baea49a8e8b9/src/lib/validation/hash.ts",
-        "website_url": "github.com",
-        "extracted_on": "2021-02-08T20:09:54+01:00",
-        "last_seen_on": "2021-02-08T22:43:40+01:00",
-        "still_on_page": true
-      },
-     ...
-     ...
-     ...
-    ]
-  }
-}
+print(result)
 ```
 
 ### Email Verifier
 
-Verify the validity of any professional email address with the most complete email checker.
-
 ```py
-from tomba.client import Client
 from tomba.services.verifier import Verifier
 
-client = Client()
-
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
-)
-
 verifier = Verifier(client)
-
 result = verifier.email_verifier('b.mohamed@tomba.io')
-
-```
-
-#### Email Verifier Response
-
-```json
-{
-  "data": {
-    "email": {
-      "mx_records": true,
-      "smtp_server": true,
-      "smtp_check": true,
-      "accept_all": false,
-      "block": false,
-      "email": "b.mohamed@tomba.io",
-      "gibberish": false,
-      "disposable": false,
-      "webmail": false,
-      "regex": true,
-      "whois": {
-        "registrar_name": "NameCheap, Inc.",
-        "created_date": "2020-07-07 20:54:07",
-        "referral_url": "https://www.namecheap.com/"
-      },
-      "status": "valid",
-      "result": "deliverable",
-      "score": 100
-    },
-    "sources": [
-      {
-        "uri": "https://github.com/tomba-io/generic-emails/blob/084fc1a63d3cdaf9a34f255bedc2baea49a8e8b9/src/lib/validation/hash.ts",
-        "website_url": "github.com",
-        "extracted_on": "2021-02-08T20:09:54+01:00",
-        "last_seen_on": "2021-02-08T22:43:40+01:00",
-        "still_on_page": true
-      },
-      ...
-      ...
-      ...
-    ]
-  }
-}
+print(result)
 ```
 
 ## Examples
 
 Sample codes under [**examples/**](/examples/) folder.
+
+## Error Handling
+
+All errors raise `TombaException`:
+
+```py
+from tomba.exception import TombaException
+
+try:
+    result = domain.domain_search('stripe.com')
+except TombaException as e:
+    print(f"Error: {e.message} (code: {e.code})")
+```
 
 ## Documentation
 
