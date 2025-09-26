@@ -8,7 +8,7 @@ class Client:
         self._endpoint = 'https://api.tomba.io/v1'
         self._global_headers = {
             'content-type': '',
-            'x-sdk-version': 'tomba:python:v1.0.4',
+            'x-sdk-version': 'tomba:python:v1.0.5',
         }
         self._timeout = 30
 
