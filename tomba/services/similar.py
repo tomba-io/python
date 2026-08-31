@@ -1,24 +1,37 @@
-from ..service import Service
 from ..exception import TombaException
+from ..service import Service
 
 
 class Similar(Service):
-
     def __init__(self, client):
-        super(Similar, self).__init__(client)
+        super().__init__(client)
 
     def websites(self, domain):
-        """retrieve similar domains based by a specific domain"""
+        """Retrieve similar domains based on a specific domain.
+
+        See: https://docs.tomba.io/api/similar#similar-websites
+
+        Args:
+            domain: The domain name to find similar websites for.
+
+        Returns:
+            dict: API response containing similar domains.
+        """
 
         if domain is None:
             raise TombaException('Missing required parameter: "domain"')
 
         params = {}
-        path = '/similar'
+        path = "/similar"
 
         if domain is not None:
-            params['domain'] = domain
+            params["domain"] = domain
 
-        return self.client.call('get', path, {
-            'content-type': 'application/json',
-        }, params)
+        return self.client.call(
+            "get",
+            path,
+            {
+                "content-type": "application/json",
+            },
+            params,
+        )

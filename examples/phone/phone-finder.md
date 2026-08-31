@@ -4,12 +4,11 @@ from tomba.services.phone import Phone
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 phone = Phone(client)
 
-result = phone.finder('******@zapier.com')
+result = phone.finder("******@zapier.com")
 ```

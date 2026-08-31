@@ -4,12 +4,11 @@ from tomba.services.enrichment import Enrichment
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 enrichment = Enrichment(client)
 
-result = enrichment.combined('******@zapier.com')
+result = enrichment.combined("******@zapier.com")
 ```

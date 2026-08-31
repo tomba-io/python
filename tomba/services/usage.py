@@ -1,17 +1,27 @@
 from ..service import Service
-from ..exception import TombaException
+
 
 class Usage(Service):
-
     def __init__(self, client):
-        super(Usage, self).__init__(client)
+        super().__init__(client)
 
     def get_usage(self):
-        """get Usage"""
+        """Get your account usage statistics.
+
+        See: https://docs.tomba.io/api/account#retrieve-api-usage#get-usage
+
+        Returns:
+            dict: API response containing usage statistics.
+        """
 
         params = {}
-        path = '/usage'
+        path = "/usage"
 
-        return self.client.call('get', path, {
-            'content-type': 'application/json',
-        }, params)
+        return self.client.call(
+            "get",
+            path,
+            {
+                "content-type": "application/json",
+            },
+            params,
+        )

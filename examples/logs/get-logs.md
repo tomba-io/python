@@ -4,9 +4,8 @@ from tomba.services.logs import Logs
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 logs = Logs(client)

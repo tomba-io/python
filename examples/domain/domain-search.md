@@ -4,12 +4,11 @@ from tomba.services.domain import Domain
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 domain = Domain(client)
 
-result = domain.domain_search('stripe.com')
+result = domain.domain_search("stripe.com")
 ```

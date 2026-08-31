@@ -4,12 +4,11 @@ from tomba.services.count import Count
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 count = Count(client)
 
-result = count.email_count('tomba.io')
+result = count.email_count("tomba.io")
 ```

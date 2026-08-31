@@ -4,12 +4,11 @@ from tomba.services.finder import Finder
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 finder = Finder(client)
 
-result = finder.enrichment('b.mohamed@tomba.io')
+result = finder.enrichment("b.mohamed@tomba.io")
 ```

@@ -4,12 +4,11 @@ from tomba.services.status import Status
 
 client = Client()
 
-(client
-  .set_key('ta_xxxx') # Your Key
-  .set_secret('') # Your Secret
+(
+    client.set_key("ta_xxxx").set_secret("")  # Your Key  # Your Secret
 )
 
 status = Status(client)
 
-result = status.domain_status('gmail.com')
+result = status.domain_status("gmail.com")
 ```
