@@ -19,7 +19,7 @@ class TestFlag:
         client = Client()
         flag = Flag(client)
         with pytest.raises(TombaException):
-            flag.create_flag(None)
+            flag.create_flag(None, "test@example.com", "spam")
 
     @pytest.mark.skipif(not has_credentials, reason="No API credentials")
     def test_list_flags(self):
