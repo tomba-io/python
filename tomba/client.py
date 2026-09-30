@@ -209,10 +209,7 @@ class Client:
 
         for i, key in enumerate(data):
             value = data[key] if isinstance(data, dict) else key
-            if prefix:
-                fk = prefix + "[" + key + "]"
-            else:
-                fk = key
+            fk = prefix + "[" + key + "]" if prefix else key
             if isinstance(data, list):
                 fk = prefix + "[" + str(i) + "]"
 
