@@ -99,7 +99,7 @@ class Client:
             method: HTTP method (get, post, put, delete).
             path: API endpoint path.
             headers: Additional headers for this request.
-            params: Request parameters (query params for GET, JSON body for POST/PUT).
+            params: Query params for GET, JSON body otherwise.
 
         Returns:
             dict: Parsed JSON response from the API.
@@ -150,17 +150,25 @@ class Client:
 
             response.raise_for_status()
 
+            def _rl(name):
+                v = int(response.headers.get(name, 0))
+                return v or None
+
             rate_limit = {
-                "second_limit": int(response.headers.get("x-second-rate-limit", 0)) or None,
-                "minute_limit": int(response.headers.get("x-minute-rate-limit", 0)) or None,
-                "daily_limit": int(response.headers.get("x-daily-rate-limit", 0)) or None,
-                "minute_remaining": int(response.headers.get("x-minute-request-left", 0)) or None,
-                "daily_remaining": int(response.headers.get("x-daily-request-left", 0)) or None,
-                "minute_reset": int(response.headers.get("x-minute-reset-seconds", 0)) or None,
-                "daily_reset": int(response.headers.get("x-daily-reset-seconds", 0)) or None,
-                "retry_after": int(response.headers.get("retry-after", 0)) or None,
-                "policy": response.headers.get("ratelimit-policy") or None,
-                "rate_limit": response.headers.get("ratelimit") or None,
+                "second_limit": _rl("x-second-rate-limit"),
+                "minute_limit": _rl("x-minute-rate-limit"),
+                "daily_limit": _rl("x-daily-rate-limit"),
+                "minute_remaining": _rl("x-minute-request-left"),
+                "daily_remaining": _rl("x-daily-request-left"),
+                "minute_reset": _rl("x-minute-reset-seconds"),
+                "daily_reset": _rl("x-daily-reset-seconds"),
+                "retry_after": _rl("retry-after"),
+                "policy": response.headers.get(
+                    "ratelimit-policy"
+                ) or None,
+                "rate_limit": response.headers.get(
+                    "ratelimit"
+                ) or None,
             }
 
             content_type = response.headers["Content-Type"]
@@ -173,11 +181,16 @@ class Client:
             if response is not None:
                 content_type = response.headers["Content-Type"]
                 if content_type.startswith("application/json"):
+                    body = response.json()
                     raise TombaException(
-                        response.json()["errors"]["message"], response.status_code, response.json()
+                        body["errors"]["message"],
+                        response.status_code,
+                        body,
                     ) from e
                 else:
-                    raise TombaException(response.text, response.status_code) from e
+                    raise TombaException(
+                        response.text, response.status_code
+                    ) from e
             else:
                 raise TombaException(e) from e
 
@@ -196,12 +209,16 @@ class Client:
 
         for i, key in enumerate(data):
             value = data[key] if isinstance(data, dict) else key
-            finalKey = prefix + "[" + key + "]" if prefix else key
-            finalKey = prefix + "[" + str(i) + "]" if isinstance(data, list) else finalKey
+            if prefix:
+                fk = prefix + "[" + key + "]"
+            else:
+                fk = key
+            if isinstance(data, list):
+                fk = prefix + "[" + str(i) + "]"
 
             if isinstance(value, (list, dict)):
-                output = {**output, **self.flatten(value, finalKey)}
+                output = {**output, **self.flatten(value, fk)}
             else:
-                output[finalKey] = value
+                output[fk] = value
 
         return output

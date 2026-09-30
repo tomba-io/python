@@ -13,7 +13,7 @@ class Verifier(Service):
 
         Args:
             email: The email address to verify.
-            enrich_mobile: Set to True to get phone number associated with the email.
+            enrich_mobile: True to get the phone number too.
             webhook_url: Webhook URL for async notifications.
 
         Returns:

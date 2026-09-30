@@ -75,7 +75,7 @@ class Leads(Service):
         See: https://docs.tomba.io/api/leads#create-a-lead
 
         Args:
-            **params: Keyword arguments for the lead data (e.g., email, first_name, last_name).
+            **params: Lead data (email, first_name, etc.).
 
         Returns:
             dict: API response containing the created lead.

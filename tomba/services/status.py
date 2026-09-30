@@ -9,7 +9,7 @@ class Status(Service):
     def domain_status(self, domain):
         """Get the status of a domain (webmail, disposable, etc.).
 
-        See: https://docs.tomba.io/api/domain#domain-status#domain-status
+        See: https://docs.tomba.io/api/domain#domain-status
 
         Args:
             domain: The domain name to check status for.
@@ -39,7 +39,7 @@ class Status(Service):
     def auto_complete(self, query):
         """Get company autocomplete suggestions.
 
-        See: https://docs.tomba.io/api/domain#domain-status#company-autocomplete
+        See: https://docs.tomba.io/api/domain#company-autocomplete
 
         Args:
             query: The search query for autocomplete suggestions.
