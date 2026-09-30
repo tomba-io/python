@@ -163,12 +163,8 @@ class Client:
                 "minute_reset": _rl("x-minute-reset-seconds"),
                 "daily_reset": _rl("x-daily-reset-seconds"),
                 "retry_after": _rl("retry-after"),
-                "policy": response.headers.get(
-                    "ratelimit-policy"
-                ) or None,
-                "rate_limit": response.headers.get(
-                    "ratelimit"
-                ) or None,
+                "policy": response.headers.get("ratelimit-policy") or None,
+                "rate_limit": response.headers.get("ratelimit") or None,
             }
 
             content_type = response.headers["Content-Type"]
@@ -188,9 +184,7 @@ class Client:
                         body,
                     ) from e
                 else:
-                    raise TombaException(
-                        response.text, response.status_code
-                    ) from e
+                    raise TombaException(response.text, response.status_code) from e
             else:
                 raise TombaException(e) from e
 

@@ -6,8 +6,7 @@ class Phone(Service):
     def __init__(self, client):
         super().__init__(client)
 
-    def finder(self, email=None, domain=None, linkedin=None,
-               full=None, webhook_url=None):
+    def finder(self, email=None, domain=None, linkedin=None, full=None, webhook_url=None):
         """Find a phone number for an email, domain, or LinkedIn URL.
 
         See: https://docs.tomba.io/api/phone#phone-finder
@@ -24,10 +23,7 @@ class Phone(Service):
         """
 
         if email is None and domain is None and linkedin is None:
-            raise TombaException(
-                'At least one of "email", "domain", '
-                'or "linkedin" is required'
-            )
+            raise TombaException('At least one of "email", "domain", or "linkedin" is required')
 
         params = {}
         path = "/phone-finder"

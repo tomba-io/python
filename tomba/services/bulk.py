@@ -33,10 +33,7 @@ class Bulk(Service):
             raise TombaException('Missing required parameter: "bulk_type"')
 
         if bulk_type not in VALID_BULK_TYPES:
-            raise TombaException(
-                f'Invalid bulk_type: "{bulk_type}". '
-                f'Must be one of: {", ".join(VALID_BULK_TYPES)}'
-            )
+            raise TombaException(f'Invalid bulk_type: "{bulk_type}". Must be one of: {", ".join(VALID_BULK_TYPES)}')
 
     def list_bulks(self, bulk_type, page=None, limit=None):
         """List all bulk operations of a given type.
