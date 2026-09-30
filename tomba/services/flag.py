@@ -37,29 +37,39 @@ class Flag(Service):
             params,
         )
 
-    def create_flag(self, email, reason=None):
+    def create_flag(self, flag_type, value, reason, comment=None):
         """Flag an email address.
 
         See: https://docs.tomba.io/api/flag#create-flag
 
         Args:
-            email: The email address to flag.
-            reason: Optional reason for flagging the email.
+            flag_type: The type of flag (e.g. "email", "domain").
+            value: The value to flag (e.g. an email address or domain).
+            reason: The reason for flagging.
+            comment: Optional comment for additional context.
 
         Returns:
             dict: API response confirming the flag creation.
         """
 
-        if email is None:
-            raise TombaException('Missing required parameter: "email"')
+        if flag_type is None:
+            raise TombaException('Missing required parameter: "flag_type"')
+
+        if value is None:
+            raise TombaException('Missing required parameter: "value"')
+
+        if reason is None:
+            raise TombaException('Missing required parameter: "reason"')
 
         params = {}
         path = "/flag"
 
-        params["email"] = email
+        params["flag_type"] = flag_type
+        params["value"] = value
+        params["reason"] = reason
 
-        if reason is not None:
-            params["reason"] = reason
+        if comment is not None:
+            params["comment"] = comment
 
         return self.client.call(
             "post",
